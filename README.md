@@ -1,66 +1,89 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Overview
+A comprehensive library management system built with Laravel. 
+This application allows users to manage allows users to browse, filter, sort, and manage a collection of books,and rating this book after they borrow it,
+also the system have manege to categories, borrow records, ratings , and users.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Features
+- Category Management: Organize books into categories.
+- Book Management: Add, edit, delete, and list books.
+- Borrow Records: Track borrowing and returning of books.
+- Rating System:Users can rate books, and only users who have rated a book can update or delete their ratings.
+- User Authentication: Secure user authentication and authorization.
+- API Support: Access and manage book data via a RESTful API.
+- 
+**Installation**
+  
+- PHP 7.x or higher
+- Composer
+- Laravel 8.x or higher
+- MySQL or any supported database
+- Gitbash
+  
+**Steps:**
+- Clone the repository:https://github.com/FaezaAldarweesh/library_management.git
+- composer install
+- cp .env.example .env
+- php artisan key:generate
+- php artisan migrate
+- php artisan serve
 
-## About Laravel
+## API Endpoint
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**category:**
+- GET /api/category: Get a list of categories (requires authentication).
+- POST /api/category: Add a new category (requires authentication).
+- GET /api/category/{id}: Get details of a specific category (requires authentication).
+- PUT /api/category/{id}: Update category details (requires authentication).
+- DELETE /api/category/{id}: Delete a category (requires authentication).
+  
+**book:**
+- GET /api/book: Get a list of book (supports with many filters) (requires authentication).
+- POST /api/book: Add a new book (requires authentication).
+- GET /api/book/{id}: Get details of a specific book (requires authentication).
+- PUT /api/book/{id}: Update book details (requires authentication).
+- DELETE /api/book/{id}: Delete a book (requires authentication).
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+**borrow_admin:**
+- GET /api/borrow_admin: Get a list of borrow recordes (requires authentication).
+- POST /api/borrow_admin: Add a new borrow recorde (requires authentication).
+- GET /api/borrow_admin/{id}: Get details of a specific borrow recorde (requires authentication).
+- PUT /api/borrow_admin/{id}: Update borrow recorde details (requires authentication).
+- DELETE /api/borrow_admin/{id}: Delete a borrow recorde (requires authentication).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**borrowUpdatStatus:**
+- PUT /api/borrowUpdatStatus/{borrow_id}: Update status borrow recorde (requires authentication).
 
-## Learning Laravel
+**rating_admin:**
+- GET /api/rating_admin/{rating}: Get details of all rating (requires authentication).
+- DELETE /api/rating_admin/{id_rating}: Delete a rating (requires authentication).
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+**borrow_user:**
+- GET /api/borrow_user: Get only user borrow recordes (requires authentication).
+- POST /api/borrow_user: Add a new borrow recorde (requires authentication).
+- GET /api/borrow_user/{id}: Get details of a specific borrow recorde (requires authentication).
+- PUT /api/borrow_user/{id}: Update borrow recorde details (requires authentication).
+- DELETE /api/borrow_user/{id}: Delete a borrow recorde (requires authentication).
+- 
+**rating_user:**
+- GET /api/rating_user/{rating}: Get details of a specific rating (requires authentication).
+- PUT /api/rating_user/{rating}: Update book details (only by the user who created it) (requires authentication).
+- DELETE /api/rating_user/{id_rating}: Delete a rating (only by the user who created it) (requires authentication).
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+**rating_user:**
+- POST /api/rating_user/{book}: Add a rating to a book (requires authentication).
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- GET /api/all_books/: Get all books (without authentication).
+- GET /api/view_book/{book_id}/: Get a specific book (without authentication).
+- GET /api/all_categories/: Get all categories (without authentication).
+- GET /api/view_category/{category_id}/: Get a specific book (without authentication).
 
-## Laravel Sponsors
+## Postman documentation link:
+https://documenter.getpostman.com/view/34467473/2sAXjNXqUU
+in this documentation you have two variables :
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- url : the link of server
+- token : to change it after do sginup or login 
 
-### Premium Partners
+## Contact
+For any inquiries or support, please reach out to Faeza Aldarweesh at faeza.aldarweesh@gmail.com
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
